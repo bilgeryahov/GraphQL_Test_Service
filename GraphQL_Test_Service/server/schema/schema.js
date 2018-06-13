@@ -10,9 +10,9 @@ const {
 
 // Dummy data, until MongoDB is initialized.
 const books = [
-	{ name: 'Name of the Wind', genre: 'Fantasy', id: 1 },
-	{ name: 'The Final Empire', genre: 'Fantasy', id: 2 },
-	{ name: 'The Long Earth', genre: 'Sci-Fi', id: 3 }
+	{ name: 'Name of the Wind', genre: 'Fantasy', id: 1, authorID: 1 },
+	{ name: 'The Final Empire', genre: 'Fantasy', id: 2, authorID: 2 },
+	{ name: 'The Long Earth', genre: 'Sci-Fi', id: 3, authorID: 3 }
 ];
 
 const authors = [
@@ -26,7 +26,13 @@ const BookType = new GraphQLObjectType({
 	fields: () => ({
 		id: { type: GraphQLInt },
 		name: { type: GraphQLString },
-		genre: { type: GraphQLString }
+		genre: { type: GraphQLString },
+		author: {
+			type: AuthorType,
+			resolve: (parent, args) => {
+				return _.find(authors, { id: parent.authorID});
+			}
+		}
 	})
 });
 
