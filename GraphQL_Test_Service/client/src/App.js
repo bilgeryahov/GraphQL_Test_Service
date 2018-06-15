@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+// Components.
+import BookList from './components/BookList';
 
-      </div>
-    );
-  }
+class App extends Component {
+	render() {
+		return (
+			<div id="main">
+				<h1>Reading List</h1>
+				<BookList/>
+			</div>
+		);
+	}
 }
 
 export default App;
