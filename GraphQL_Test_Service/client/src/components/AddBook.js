@@ -6,7 +6,8 @@ import {
 
 import {
 	getAuthorsQuery,
-	addBookMutation
+	addBookMutation,
+	getBooksQuery
 } from '../queries/queries';
 
 class AddBook extends Component {
@@ -35,7 +36,12 @@ class AddBook extends Component {
 				name: this.state.name,
 				genre: this.state.genre,
 				authorID: this.state.authorID
-			}
+			},
+			refetchQueries: [
+				{
+					query: getBooksQuery
+				}
+			]
 		});
 	}
 	render() {
