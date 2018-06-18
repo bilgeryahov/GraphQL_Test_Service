@@ -18,7 +18,7 @@ const getBooksQuery = gql`
 }
 `;
 
-export default {
+export {
 	getAuthorsQuery,
 	getBooksQuery
 }
